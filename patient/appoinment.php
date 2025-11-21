@@ -3,7 +3,6 @@ session_start();
 include "../inc/navbar.php";
 include "../inc/sidebar.php";
 include "../inc/connect.php";
-include "../cacheremove.php";
 // error_reporting(0);
 $username = $_SESSION['patient'];
 $sql = "SELECT * FROM `booking_tab` where username='$username'";
@@ -17,9 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="/HMS/css/bookingstyle.css">
+  <link rel="stylesheet" href="/HMS/css/registerstyle.css">
   <title>Appointment Log</title>
   <style>
+    .reg{
+      margin-top: -60vh;
+    }
     table, th, td {
   border: 1px solid black;
   padding: 8px;

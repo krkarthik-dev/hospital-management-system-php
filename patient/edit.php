@@ -22,7 +22,7 @@ include "../inc/sidebar.php";
      $bgroup = $_POST['bgroup'];
      $dob = $_POST['dob'];
      $phno = $_POST['phno'];
-     $password = $_POST['password'];
+     $password = md5($_POST['password']);
      $gender = $_POST['gender'];
      $imagename = $_FILES['image']['name'];
      $tempname = $_FILES['image']['tmp_name'];
@@ -30,7 +30,8 @@ include "../inc/sidebar.php";
        move_uploaded_file($tempname, "img/$imagename");
      }
      $dept = $_POST['dept'];
-     $sql = "UPDATE `patient` SET `p_fname` = '$fname',`p_lname` = '$lname',`p_email` = '$email',`p_address` = '$address',`p_city` = '$city',`p_state` = '$state',`p_pincode` = '$pin',`p_bloodgroup` = '$bgroup',`p_dob`='$dob',`p_phno` = '$phno',`p_password` = '$password',`p_gender` = '$gender',`p_image` = '$imagename',`p_dept_id` = '$dept' WHERE `username`='$usrname' ;";
+     $med_his=$_POST['medical_history'];
+     $sql = "UPDATE `patient` SET `p_fname` = '$fname',`p_lname` = '$lname',`p_email` = '$email',`p_address` = '$address',`p_city` = '$city',`p_state` = '$state',`p_pincode` = '$pin',`p_bloodgroup` = '$bgroup',`p_DOB`='$dob',`p_phno` = '$phno',`p_password` = '$password',`p_gender` = '$gender',`p_image` = '$imagename',`Med_history`='$med_his' WHERE `p_username`='$username'";
      $query = mysqli_query($conn, $sql);
      if ($query) {
        header("Location: patient.php");
@@ -42,7 +43,7 @@ include "../inc/sidebar.php";
    $pswd1 = $_POST['password'];
    $pswd2 = $_POST['confirm'];
    if ($pswd1 != $pswd2) {
-     echo "<script> alert('Password Doesnot Match!'); </script>";
+     echo "<script> alert('Password doesn't Match!'); </script>";
    } else {
      return true;
    }
@@ -57,14 +58,19 @@ include "../inc/sidebar.php";
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="/HMS/admin/formValidate.js">
   </script>
+  <style>
+    .reg{
+      margin-top: -40%;
+    }
+  </style>
 </head>
 
 <body>
   <div class="reg">
     <div class="container">
-      <div class="title">Doctor Profile Updation</div>
+      <div class="title">Doctor Profile update's</div>
       <div class="content">
-        <form action="updateform.php" method="POST" class="form" enctype="multipart/form-data">
+        <form action="edit.php" method="POST" class="form" enctype="multipart/form-data">
           <div class="user-details">
             <div class="input-box">
               <span class="details">First Name</span>
@@ -76,7 +82,7 @@ include "../inc/sidebar.php";
             </div>
             <div class="input-box">
               <span class="details">Username</span>
-              <input type="text" name="username" id="username" disabled value="<?php echo $pf["p_username"]; ?>" required>
+              <input type="text" name="username" id="username" value="<?php echo $pf["p_username"]; ?>" readonly>
             </div>
             <div class="input-box">
               <span class="details">Email</span>
@@ -162,20 +168,11 @@ include "../inc/sidebar.php";
             </div>
             <div class="input-box">
               <span class="details">DOB</span>
-              <input type="date" name="dob" value="<?php echo $pf["p_dob"]; ?>" required>
+              <input type="date" name="dob" required>
             </div>
             <div class="input-box">
-              <span class="details">Department</span>
-              <select type="select" name="dept" id="dept" required>
-                <option value="">Select One Department</option>
-                <?php
-                $q1 = "SELECT * FROM `dept_tab`";
-                $result = mysqli_query($conn, $q1);
-                while ($row = mysqli_fetch_array($result)) {
-                ?>
-                  <option value="<?php echo $row['dept_id']; ?>"><?php echo $row['dept_name']; ?></option>
-                <?php } ?>
-              </select>
+              <span class="details">Medical History</span>
+              <textarea name="medical_history" rows="4" cols="75" placeholder="Enter Your Medical History"></textarea>
             </div>
           </div>
           <div class="gender-details">

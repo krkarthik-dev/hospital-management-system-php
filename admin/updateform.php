@@ -21,7 +21,7 @@ include "../inc/sidebar.php";
      $bgroup = $_POST['bgroup'];
      $dob = $_POST['dob'];
      $phno = $_POST['phno'];
-     $password = $_POST['password'];
+     $password = md5($_POST['password']);
      $gender = $_POST['gender'];
      $imagename = $_FILES['image']['name'];
      $tempname = $_FILES['image']['tmp_name'];
@@ -29,7 +29,7 @@ include "../inc/sidebar.php";
        move_uploaded_file($tempname, "img/$imagename");
      }
      $dept = $_POST['dept'];
-     $sql = "UPDATE `user_tab` SET `fname` = '$fname',`lname` = '$lname',`email` = '$email',`address` = '$address',`city` = '$city',`state` = '$state',`pincode` = '$pin',`bloodgroup` = '$bgroup',`dob`='$dob',`phno` = '$phno',`password` = '$password',`gender` = '$gender',`image` = '$imagename',`dept_id` = '$dept' WHERE `username`='$usrname' ;";
+     $sql = "UPDATE `user_tab` SET `fname` = '$fname',`lname` = '$lname',`email` = '$email',`address` = '$address',`city` = '$city',`state` = '$state',`pincode` = '$pin',`bloodgroup` = '$bgroup',`dob`='$dob',`phno` = '$phno',`password` = '$password',`gender` = '$gender',`image` = '$imagename',`dept_id` = '$dept' WHERE `username`='$username'";
      $query = mysqli_query($conn, $sql);
      if ($query) {
        header("Location: doctor_man.php");
@@ -76,7 +76,7 @@ include "../inc/sidebar.php";
             </div>
             <div class="input-box">
               <span class="details">Username</span>
-              <input type="text" name="username" id="username" disabled value="<?php echo $pf["username"]; ?>" required>
+              <input type="text" name="username" id="username" value="<?php echo $pf["username"]; ?>" readonly>
             </div>
             <div class="input-box">
               <span class="details">Email</span>

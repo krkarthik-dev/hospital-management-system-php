@@ -20,7 +20,7 @@ exit();
 }
 else
 {
- echo "<script> alert('Password or Username Doesnot Match!'); </script>";
+ echo "<script> alert('Password or Username doesn't Match!'); </script>";
 }
 }
 ?>

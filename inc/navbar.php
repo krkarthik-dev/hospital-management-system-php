@@ -24,7 +24,7 @@
                 <a class="nav-link" href="/HMS/aboutus.php">About Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/HMS/patient/patientlogin.php">Book an Appoinment</a>
+                <a class="nav-link" href="/HMS/patient/patientlogin.php">Book an Appointment</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/HMS/login.php">Office</a>

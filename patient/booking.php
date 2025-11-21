@@ -3,7 +3,6 @@ session_start();
 include "../inc/navbar.php";
 include "../inc/sidebar.php";
 include "../inc/connect.php";
-include "../cacheremove.php";
 //error_reporting(0);
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
   $date = $_POST['date'];
@@ -47,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 <body>
   <div class="reg">
     <div class="container">
-      <div class="title">Appoinment Booking</div>
+      <div class="title">Appointment Booking</div>
       <div class="content">
         <?php
         if (!isset($_POST['deptnext']) and !isset($_POST['next'])) {
@@ -111,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         if (isset($_POST['next'])) {
           $dname = $_POST['deptname'];
           $usrname = $_POST['doctor'];
-          $sql = "SELECT * FROM `user_tab` WHERE `user_type`='doctor' AND `username`='$usrname'";
+          $sql = "SELECT * FROM `user_tab` WHERE `user_type`='doctor' AND `username`='$usrname' AND status=1";
           $sr = mysqli_query($conn, $sql);
           $r1 = mysqli_fetch_array($sr);
         ?>

@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']))
       move_uploaded_file($tempname,"/HMS/img/$imagename");
     }  
     $dept = $_POST['dept'];
-    $sql = "UPDATE `user_tab` SET `fname` = '$fname',`lname` = '$lname',`email` = '$email',`address` = '$address',`city` = '$city',`state` = '$state',`pincode` = '$pin',`dob` = '$dob',`phno` = '$phno',`password` = '$password',`gender` = '$gender',`image` = '$imagename',`dept_id`='$dept' WHERE `username`='$usrname' ;";
+    $sql = "UPDATE `user_tab` SET `fname` = '$fname',`lname` = '$lname',`email` = '$email',`address` = '$address',`city` = '$city',`state` = '$state',`pincode` = '$pin',`dob` = '$dob',`phno` = '$phno',`password` = '$password',`gender` = '$gender',`image` = '$imagename',`dept_id`='$dept' WHERE `username`='$username' ;";
     $query = mysqli_query($conn,$sql);
     if($query)
     {
@@ -78,7 +78,7 @@ function matchPassword()
           </div>
           <div class="input-box">
             <span class="details">Username</span>
-            <input type="text" name="username" id="username" disabled value="<?php echo $pf["username"]; ?>" required>
+            <input type="text" name="username" id="username" value="<?php echo $pf["username"]; ?>" readonly>
           </div>
           <div class="input-box">
             <span class="details">Email</span>

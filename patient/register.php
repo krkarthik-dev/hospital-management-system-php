@@ -1,8 +1,6 @@
 <?php
 include "../inc/navbar.php";
 include "../inc/connect.php";
-include "../cacheremove.php";
-error_reporting(0);
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
   if (matchPassword()) {
     $fname = $_POST['fname'];
@@ -14,22 +12,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $state = $_POST['state'];
     $pin = $_POST['pin'];
     $bgroup = $_POST['bgroup'];
+    $dob = $_POST['dob'];
     $phno = $_POST['phno'];
     $password = md5($_POST['password']);
     $gender = $_POST['gender'];
     $imagename = $_FILES['image']['name'];
     $tempname = $_FILES['image']['tmp_name'];
-    echo $username;
     if (!file_exists($imagename)) {
       move_uploaded_file($tempname, "img/$imagename");
     }
-    $result = mysqli_query($conn, "SELECT * FROM `patient` WHERE `username`='$username'");
+    $med_his=$_POST['medical_history'];
+    $result = mysqli_query($conn, "SELECT * FROM `patient` WHERE `p_username`='$username'");
     $num_rows = mysqli_num_rows($result);
     if ($num_rows) {
       echo "<script>alert('Username Exits/Username Should Not Be Empty');</script>";
     } else {
 
-      $sql = "INSERT INTO `patient` (`p_fname`,`p_lname`,`p_username`,`p_email`,`p_address`,`p_city`,`p_state`,`p_pincode`,`p_bloodgroup`,`p_phno`,`p_password`,`p_gender`,`p_image`) VALUES ('$fname','$lname','$username','$email','$address','$city','$state','$pin','$bgroup','$phno','$password','$gender','$imagename')";
+      $sql = "INSERT INTO `patient` (`p_fname`,`p_lname`,`p_username`,`p_email`,`p_address`,`p_city`,`p_state`,`p_pincode`,`p_bloodgroup`,`p_DOB`,`p_phno`,`p_password`,`p_gender`,`p_image`,`Med_history`) VALUES ('$fname','$lname','$username','$email','$address','$city','$state','$pin','$bgroup','$dob','$phno','$password','$gender','$imagename','$med_his')";
       $query = mysqli_query($conn, $sql);
       if ($query) {
         header("Location: \HMS\patient\patientlogin.php");
@@ -42,7 +41,7 @@ function matchPassword()
   $pswd1 = $_POST['password'];
   $pswd2 = $_POST['confirm'];
   if ($pswd1 != $pswd2) {
-    echo "<script> alert('Password Doesnot Match!'); </script>";
+    echo "<script> alert('Password doesn't Match!'); </script>";
   } else {
     return true;
   }
@@ -53,18 +52,22 @@ function matchPassword()
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="/HMS/css/registerstyle.css?<?php echo $version ?>">
+  <link rel="stylesheet" href="/HMS/css/registerstyle.css">
   <script type="text/javascript" src="/HMS/admin/formValidate.js">
   </script>
+  <style>
+    .reg{
+      margin-top: 10%;
+    }
+  </style>
 </head>
 
 <body>
-
   <div class="reg">
     <div class="container">
-      <div class="title">Doctor Registration</div>
+      <div class="title">Patient Registration</div>
       <div class="content">
-        <form action="register.php" method="POST" class="form" name="form" enctype="multipart/form-data" style="margin-top:1100px;" >
+        <form action="register.php" method="POST" class="form" name="form" enctype="multipart/form-data">
           <div class="user-details">
             <div class="input-box">
               <span class="details">First Name</span>
@@ -138,11 +141,28 @@ function matchPassword()
               <input type="text" name="pin" placeholder="Enter your Pin Code" required>
             </div>
             <div class="input-box">
+              <span class="details">DOB</span>
+              <input type="date" name="dob" required>
+            </div>
+            <div class="input-box">
               <span class="details">Phone Number</span>
               <input type="text" name="phno" id="phno" placeholder="Enter your number" onkeyup="ValidatePh();" required>
               <p class="message" id="phmsg">*10 mobile digit number</p>
             </div>
-
+            <div class="input-box">
+              <span class="details">Blood Group</span>
+              <select type="select" name="bgroup" id="bgroup" required>
+                <option value="">Select One Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+              </select>
+            </div>
             <div class="input-box">
               <span class="details">Password</span>
               <input type="password" name="password" id="pswd1" placeholder="Enter your password" onkeyup="ValidatePswd();" required>
@@ -158,19 +178,10 @@ function matchPassword()
               <input type="file" name="image">
             </div>
             <div class="input-box">
-              <span class="details">Blood Group</span>
-              <select type="select" name="bgroup" id="bgroup" required>
-                <option value="">Select One Department</option>
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
-              </select>
+              <span class="details">Medical History</span>
+              <textarea name="medical_history" rows="4" cols="75" placeholder="Enter Your Medical History"></textarea>
             </div>
+
           </div>
           <div class="gender-details">
             <input type="radio" name="gender" value="Male" id="dot-1">

@@ -47,7 +47,7 @@ $result = mysqli_query($conn,$sql);
           </div>
           <div class="discription">
           <div class="input-box">
-            <span class="details">Discription</span>
+            <span class="details">Description</span>
             <textarea style="width :640px; outline: none; font-size: 16px; border-radius: 5px; padding-left: 15px; border: 1px solid #ccc; border-bottom-width: 2px; transition: all 0.3s ease;" name="username" rows="4" cols="50"><?php echo $pf["remark"]; ?></textarea>
           </div>
           </div>

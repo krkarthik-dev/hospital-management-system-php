@@ -15,14 +15,14 @@
   hospital in its own five storied complex<br>
 • Was first to bring the concepts of central oxygen & suction lines & its own oxygen
   manufacturing plant in Kerala.<br>
-• It was the first Privately owned Hospital in Kerala to get Full NABH Accreditiation in 2002.<br>
+• It was the first Privately owned Hospital in Kerala to get Full NABH Accreditation in 2002.<br>
 • First hospital in Kerala to build five state of the Art high end Modular Theatres 
   with HEPA filters, laminar flow to conduct Super Specialty Surgeries.<br>
 • Was amongst the first to bring laparoscopic surgery in the city<br>
-• Seneior doctors of our hospital have an experience of more than 40 years,
+• Senior doctors of our hospital have an experience of more than 40 years,
   who are serving the community for the last 40 years without any break inspite of Covid.<br>
 • Has a surgical team headed by Senior Surgeon with the experience of more than 40 years
-  and residing in the campusi.e. availability 24*7
+  and residing in the campus ie. availability 24*7
 <h3>
 </i>
 </p>

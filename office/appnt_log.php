@@ -3,7 +3,6 @@ session_start();
 include "../inc/navbar.php";
 include "../inc/sidebar.php";
 include "../inc/connect.php";
-include "../cacheremove.php";
 error_reporting(0);
 $sql = "SELECT * FROM `booking_tab`";
 $query = mysqli_query($conn, $sql);
@@ -15,7 +14,7 @@ $query = mysqli_query($conn, $sql);
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/HMS/css/registerstyle.css">
   <link rel="stylesheet" href="/HMS/css/tabstyle.css">
-  <title>Appoinment log</title>
+  <title>Appointment log</title>
   <style>
     .reg{
       margin-top: -60%;
@@ -27,14 +26,14 @@ $query = mysqli_query($conn, $sql);
   <div class="reg">
     <div class="container">
       <!-- <div class="content"><br> -->
-        <h3>Your Appoinments</h3><br>
+        <h3>Booked Appointments</h3><br>
         <table class="tab" id="myTable">
           <tr>
             <th>Booking ID</th>
             <th>Doctor</th>
             <th>Time</th>
             <th>Date</th>
-            <th>Action</th>
+            <th>Status</th>
           </tr>
           <?php
           while ($rows = mysqli_fetch_assoc($query)) {

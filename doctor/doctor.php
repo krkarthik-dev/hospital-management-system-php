@@ -26,7 +26,7 @@ $pf = mysqli_fetch_array($result);
   <div class="profile">
   <div class="container">
   <img src="/HMS/img/<?php echo $pf['image']; ?>" alt="Profile Picture" align="right" width="160vh" height="160vh">
-    <div class="title">PATIENT</div>
+    <div class="title">Doctor</div>
     <br><hr><br>
     <div class="title">My Profile</div>
     <br><br><br>

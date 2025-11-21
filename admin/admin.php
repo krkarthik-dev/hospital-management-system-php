@@ -1,20 +1,27 @@
 <?php 
 session_start();
 $username = $_SESSION['user'];
+error_reporting(0);
 include "../inc/connect.php";
 $sql = "SELECT * FROM `user_tab` WHERE username = '$username'";
 $result = mysqli_query($conn,$sql);
 $pf = mysqli_fetch_array($result);
 ?>
- <?php include '../inc/navbar.php'; ?>
+ <?php  include '../inc/navbar.php'; ?>
    <?php include '../inc/sidebar.php'; ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/HMS/css/adminstyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <style>
+      .profile{
+        margin-top: -60%;
+      }
+    </style>
    </head>
 <body>
   <div class="profile">

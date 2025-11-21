@@ -3,7 +3,6 @@ session_start();
 include "../inc/navbar.php";
 include "../inc/sidebar.php";
 include "../inc/connect.php";
-include "../cacheremove.php";
 // error_reporting(0);
 $dname=$_SESSION['user'];
 $tdate = date("Y-m-d");
@@ -19,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/HMS/css/registerstyle.css">
-  <title>Appoinment Log</title>
+  <title>Appointment Log</title>
   <style>
     .reg{
       margin-top: -40%;
@@ -35,9 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 <body>
   <div class="reg">
     <div class="container">
-      <div class="title">Appoinments</div>
+      <div class="title">Appointments</div>
       <div class="content"><br>
-        <h3>My Appoinments</h3><br>
+        <h3>My Appointments</h3><br>
           <table class="tab" id="myTable" border="1" style="padding: 5px;">
     <tr>
        <th>Booking ID</th>

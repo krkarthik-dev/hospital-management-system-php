@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   require_once('inc/connect.php');
   $username = mysqli_real_escape_string($conn, $usernamec);
   $password = mysqli_real_escape_string($conn, $passwordc);
-  $sql = "SELECT * FROM `user_tab` WHERE username = '$username' AND password = '$password'";
+  $sql = "SELECT * FROM `user_tab` WHERE username = '$username' AND password = '$password' AND status=1 ";
   $result = mysqli_query($conn, $sql);
   $check = mysqli_fetch_array($result);
   if (isset($check)) {
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
   } else {
-    echo "<script> alert('Password or Username Doesnot Match!'); </script>";
+    echo "<script> alert('Password or Username doesn't Match!'); </script>";
   }
 }
 ?>

@@ -1,0 +1,75 @@
+# ===========================
+# OS Generated Files
+# ===========================
+.DS_Store
+Thumbs.db
+
+# ===========================
+# IDE / Editor Folders
+# ===========================
+.vscode/
+.idea/
+
+# ===========================
+# PHP / Web Cache & Logs
+# ===========================
+*.log
+*.cache
+*.tmp
+*.bak
+php_errors.log
+error_log
+
+# ===========================
+# Uploaded Images & Media
+# (protect patient data)
+# ===========================
+img/
+uploads/
+
+# ===========================
+# System / Sensitive Files
+# ===========================
+.env
+.env.local
+.env.*.local
+
+# ===========================
+# Database Files
+# (never upload your DB)
+# ===========================
+*.sql
+*.sqlite
+*.db
+hospital.sql
+
+# ===========================
+# Backup / Temp Files
+# ===========================
+*.zip
+*.rar
+*.tar
+*.tar.gz
+*~
+*.swp
+
+# ===========================
+# Node/Composer (if used later)
+# ===========================
+node_modules/
+vendor/
+
+# ===========================
+# PDF / PPT / Docs
+# (optional: keep repo clean)
+# ===========================
+*.pptx
+*.pdf
+HMS2.pptx
+
+# ===========================
+# Cache / Session Folders
+# ===========================
+sessions/
+temp/
+cache/

@@ -3,7 +3,6 @@ session_start();
 include "../inc/navbar.php";
 include "../inc/sidebar.php";
 include "../inc/connect.php";
-include "../cacheremove.php";
 // error_reporting(0);
 $username = $_SESSION['patient'];
 $sql = "SELECT * FROM `booking_tab` where username='$username'";

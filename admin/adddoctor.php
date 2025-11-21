@@ -43,7 +43,7 @@ function matchPassword()
   $pswd1 = $_POST['password'];
   $pswd2 = $_POST['confirm'];
   if ($pswd1 != $pswd2) {
-    echo "<script> alert('Password Doesnot Match!'); </script>";
+    echo "<script> alert('Password doesn't Match!'); </script>";
   } else {
     return true;
   }
